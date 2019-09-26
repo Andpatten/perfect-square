@@ -18,16 +18,16 @@ class SquareTest {
     assertFalse(Square.isPerfectSquare(91));
     assertFalse(Square.isPerfectSquare(24));
   }
-    @Test
-   void isException() {
-    assertThrows(IllegalArgumentException.class, new ExecuteIsPerfectSquare());
-   }
 
-   private static class ExecuteIsPerfectSquare implements Executable {
+  @Test
+  void isException() {
+    assertThrows(IllegalArgumentException.class, new Executable() {
+      @Override
+      public void execute() throws Throwable {
+        Square.isPerfectSquare(-1);
+      }
+    });
+  }
 
-     @Override
-     public void execute() throws Throwable {
-       Square.isPerfectSquare(-1);
-     }
-   }
+
 }
